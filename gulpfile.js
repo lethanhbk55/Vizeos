@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var git = require('gulp-git');
 var merge2 = require('merge2');
 var sass = require('gulp-sass');
 var clean = require('gulp-clean');
@@ -9,52 +8,40 @@ var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var mainbowerfiles = require('main-bower-files');
 
-gulp.task('default', function () {
+gulp.task('default', function() {
     console.log('[:)] Welcome to test gulp - sonseait');
 });
 
-gulp.task('git:checkin', function () {
-
-});
-
-gulp.task('git:latest', function () {
-
-});
-
-gulp.task('git:undo', function () {
-
-});
-
-gulp.task('copy', function () {
+gulp.task('copy', function() {
     return merge2(
         gulp.src(['./app/assets/libs/*', '!./app/assets/libs/kendo'], { read: false }).pipe(clean()),
-        gulp.src(mainbowerfiles(), { base: './bower_components' }).pipe(rename(function (path) {
+        gulp.src(mainbowerfiles(), { base: './bower_components' }).pipe(rename(function(path) {
             path.dirname = path.dirname.replace(/\\dist|\\release|\\lib/, '');
         })).pipe(gulp.dest('./app/assets/libs'))
     );
 });
 
-gulp.task('compile:sass', function () {
+gulp.task('compile:sass', function() {
     return merge2(
-        gulp.src('./app/assets/css/*').pipe(clean()),
-        gulp.src(['./app/assets/sass/**/*.scss'], {base: './app/assets/sass/'}).pipe(sass()).pipe(gulp.dest('./app/assets/css'))
+        gulp.src('./app/assets/css/**/*.*').pipe(clean()),
+        gulp.src(['./app/assets/sass/**/*.scss'], { base: './app/assets/sass/' }).pipe(sass()).pipe(gulp.dest('./app/assets/css'))
     );
 });
 
-gulp.task('uglify', function () {
+gulp.task('uglify', function() {
     var files = []; // array of files
-    return q.fcall(function () {
+    return q.fcall(function() {
         return gulp.src(files, { base: './' }).pipe(sourcemaps.init())
             .pipe(sourcemaps.write('./', { addComment: false }))
             .pipe(gulp.dest('./'));
-    }).then(function (source) {
+    }).then(function(source) {
         return gulp.src(files, { base: './' }).pipe(uglify())
             .pipe(rename({ suffix: '.min', extname: '.js' }))
             .pipe(gulp.dest('./'));
     });
 });
 
-gulp.task('inject', function () {
+gulp.task('inject', function() {
     var files = gulp.src([
         './app/assets/libs/animate.css/animate.css',
         './app/assets/libs/owl.carousel/assets/owl.carousel.css',
