@@ -1,0 +1,35 @@
+{
+  "name": "vizeos",
+  "version": "1.1.0",
+  "description": "My startup app with angularjs",
+  "main": "app.module.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-git": "^1.7.0",
+    "gulp-inject": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "main-bower-files": "^2.11.1",
+    "merge2": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonseait/Vizeos.git"
+  },
+  "author": "sonseait",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sonseait/Vizeos/issues"
+  },
+  "homepage": "https://github.com/sonseait/Vizeos#readme",
+  "keywords": [
+    "startup"
+  ]
+}

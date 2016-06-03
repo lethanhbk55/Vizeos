@@ -1,0 +1,84 @@
+{
+	"name": "Vizeos",
+	"homepage": "https://github.com/sonseait/Vizeos",
+	"authors": [
+		"sonseait"
+	],
+	"description": "My startup app with angularjs",
+	"main": "app.module.js",
+	"moduleType": [],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+
+		"jquery": "1.x",
+		"lodash": "^4.6.1",
+		"moment": "^2.12.0",
+
+		"bootstrap": "^3.3.6",
+		"jquery-slimscroll": "^1.3.7",
+		"jquery.countdown": "^2.1.0",
+		"owl.carousel": "OwlCarousel2#^2.0.0-beta.3",
+		"bootstrap-hover-dropdown": "^2.2.1",
+
+		"uniform": "pixelmatrix/uniform#^2.1.2",
+
+		"angular": "1.x",
+		"q": "1.x",
+		"angular-ui-router": "^0.2.18",
+		"angular-translate": "^2.11.0",
+		"oclazyload": "^1.0.9",
+
+		"font-awesome": "^4.5.0",
+		"animate.css": "^3.5.1",
+		"simple-line-icons": "^2.2.4"
+
+	},
+	"overrides": {
+		"bootstrap": {
+			"main": [
+				"dist/**/bootstrap.{js,css}",
+				"dist/fonts/*"
+			]
+		},
+		"font-awesome": {
+			"main": [
+				"**/font-awesome.css",
+				"fonts/font*.*"
+			]
+		},
+		"owl.carousel": {
+			"main": [
+				"dist/**/owl.carousel.{css,js}",
+				"dist/**/owl.theme.default.min.css"
+			]
+		},
+		"simple-line-icons": {
+			"main": [
+				"css/*",
+				"fonts/*"
+			]
+		},
+		"jquery-slimscroll": {
+			"main": [
+				"*.slimscroll.js"
+			]
+		},
+		"uniform": {
+			"main": [
+				"lib/*",
+				"themes/default/css/*.default.css",
+				"themes/default/images/*"
+			]
+		}
+	},
+	"keywords": [
+		"startup"
+	]
+}
