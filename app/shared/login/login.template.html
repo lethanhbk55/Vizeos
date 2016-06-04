@@ -1,0 +1,71 @@
+<!-- BEGIN LOGO -->
+<div class="logo">
+    <a href="">
+        <img src="assets/imgs/logo.png" alt="" style="width: 20%; height: 20%;" /> </a>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="login-form" ng-if="vm.ui.status === 'signing'" ng-style="{'display': vm.ui.status === 'signing' ? 'block' : 'none'}" ng-enter="vm.actions.login(vm.data)">
+        <h3 class="form-title font-green">Đăng Nhập</h3>
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span> Tên đăng nhập và mật khẩu không được bỏ trống. </span>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Tên đăng nhập" ng-model="vm.data.Username" /> </div>
+        <div class="form-group">
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" ng-model="vm.data.Password" /> </div>
+        <div class="form-actions">
+            <button type="button" class="btn green uppercase" ng-click="vm.actions.login(vm.data)">Đăng nhập</button>
+            <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" name="remember" value="1" />Nhớ
+                <span></span>
+            </label>
+            <a href="javascript:;" class="forget-password" ng-click="vm.ui.status = 'forget';">Quên mật khẩu?</a>
+        </div>
+        <div class="create-account">
+            <p>
+                <a href="javascript:;" class="uppercase" ng-click="vm.ui.status = 'create';">Tạo mới tài khoản</a>
+            </p>
+        </div>
+    </form>
+    <!-- END LOGIN FORM -->
+    <!-- BEGIN FORGOT PASSWORD FORM -->
+    <form class="forget-form" ng-if="vm.ui.status === 'forget'" ng-style="{'display': vm.ui.status === 'forget' ? 'block' : 'none'}">
+        <h3 class="font-green">Quên mặt khẩu?</h3>
+        <p> Nhập email của bạn vào phía dưới để lấy lại mật khẩu. </p>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" /> </div>
+        <div class="form-actions">
+            <button type="button" id="back-btn" class="btn green btn-outline" ng-click="vm.ui.status = 'signing'">Quay lại</button>
+            <button type="button" class="btn btn-success uppercase pull-right">Gửi đi</button>
+        </div>
+    </form>
+    <!-- END FORGOT PASSWORD FORM -->
+    <!-- BEGIN REGISTRATION FORM -->
+    <form class="register-form" ng-if="vm.ui.status === 'create'" ng-style="{'display': vm.ui.status === 'create' ? 'block' : 'none'}">
+        <h3 class="font-green">Đăng ký</h3>
+        <p class="hint"> Điền thông tin cá nhân của bạn: </p>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Họ tên" /> </div>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Email" /> </div>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Địa chỉ" /> </div>
+        <p class="hint"> Điền thông tin đăng nhập của bạn: </p>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Tên đăng nhập" /> </div>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" /> </div>
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Nhập lại mật khẩu" /> </div>
+        <div class="form-actions">
+            <button type="button" id="register-back-btn" class="btn green btn-outline" ng-click="vm.ui.status = 'signing'">Quay lại</button>
+            <button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right">Gửi đi</button>
+        </div>
+    </form>
+    <!-- END REGISTRATION FORM -->
+</div>
+<div class="copyright"> 2016 © VIP52. </div>
