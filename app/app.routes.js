@@ -1,40 +1,33 @@
-(function () {
+(function() {
     'use strict';
 
     angular.module('vizeos').config(config);
 
     function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/');
 
-        $urlRouterProvider.otherwise('/comming-soon');
-
-        $stateProvider.state('home', {
-            url: '/',
+        $stateProvider.state('profile', {
+            url: '/profile',
             views: {
                 content: {
-                    controller: 'HomeController',
+                    controller: 'ProfileController',
                     controllerAs: 'vm',
-                    templateUrl: './modules/home/home.template.html',
-                }
-            },
-            resolve: {
-                loader: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('home');
+                    bindToController: true,
+                    templateUrl: './modules/profile/profile.template.html',
                 }
             }
-        }).state('coming-soon', {
-            url: '/coming-soon',
+        });
+
+        $stateProvider.state('users', {
+            url: '/users',
             views: {
                 content: {
-                    controller: 'ComingSoonController',
+                    controller: 'UsersController',
                     controllerAs: 'vm',
-                    templateUrl: './shared/coming-soon/coming-soon.template.html'
-                }
-            },
-            resolve: {
-                loader: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('coming-soon');
+                    bindToController: true,
+                    templateUrl: './modules/users/users.template.html',
                 }
             }
-        })
+        });
     };
 })();
