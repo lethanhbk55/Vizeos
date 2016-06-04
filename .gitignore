@@ -49,4 +49,6 @@ Temporary Items
 bower_components
 node_modules
 app/assets/libs
+!app/assets/libs/metronic
+!app/assets/libs/kendo
 app/assets/css
