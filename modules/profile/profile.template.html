@@ -1,0 +1,187 @@
+<!-- BEGIN PROFILE SIDEBAR -->
+<div class="profile-sidebar">
+    <!-- PORTLET MAIN -->
+    <div class="portlet light profile-sidebar-portlet ">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+            <img ng-src="{{vm.data.profile.Avatar}}" class="img-responsive" alt=""> </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name uppercase"> {{vm.data.profile.DisplayName}} </div>
+            <div class="profile-usertitle-job"> Administrator </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+            <ul class="nav">
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-home"></i> Tổng quan </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:;">
+                        <i class="icon-settings"></i> Cài đặt tài khoản </a>
+                </li>
+                <li>
+                    <a href="mailto:sonseait@gmail.com">
+                        <i class="icon-info"></i> Trợ giúp </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END MENU -->
+    </div>
+    <!-- END PORTLET MAIN -->
+</div>
+<!-- END BEGIN PROFILE SIDEBAR -->
+<!-- BEGIN PROFILE CONTENT -->
+<div class="profile-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light ">
+                <div class="portlet-title tabbable-line">
+                    <div class="caption caption-md">
+                        <i class="icon-globe theme-font hide"></i>
+                        <span class="caption-subject font-blue-madison bold uppercase">Thông tin tài khoản</span>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="javascript:;" data-target="#tab_1_1" data-toggle="tab">Thông tin cá nhân</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#tab_1_2" data-toggle="tab">Đổi ảnh đại diện</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#tab_1_3" data-toggle="tab">Đổi mật khẩu</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-target="#tab_1_4" data-toggle="tab">Quyền truy cập</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="portlet-body">
+                    <div class="tab-content">
+                        <!-- PERSONAL INFO TAB -->
+                        <div class="tab-pane active" id="tab_1_1">
+                            <form role="form" action="#">
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.FirstName" />
+                                    <label>Họ</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.LastName" />
+                                    <label>Tên</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.PhoneNumber" />
+                                    <label>Số di động</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.Interest" />
+                                    <label>Sở thích</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.Occupation" />
+                                    <label>Kỹ năng</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label">
+                                    <input type="text" class="form-control" ng-model="vm.data.profile.About" />
+                                    <label>Giới thiệu</label>
+                                </div>
+                                <div class="margiv-top-10">
+                                    <a href="javascript:;" class="btn green" ng-click="vm.actions.update(vm.data.profile)"> Lưu lại </a>
+                                    <a href="javascript:;" class="btn default" ng-click="vm.actions.cancel()"> Hủy bỏ </a>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- END PERSONAL INFO TAB -->
+                        <!-- CHANGE AVATAR TAB -->
+                        <div class="tab-pane" id="tab_1_2">
+                            <p> Bạn có thể thay đổi ảnh đại diện tại đây. </p>
+                            <form action="#" role="form">
+                                <div class="form-group">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail" style="width: 320px; height: 240px;">
+                                            <img src="http://www.placehold.it/320x240/EFEFEF/AAAAAA" alt="" /> </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                        <div>
+                                            <span class="btn default btn-file">
+                                            <span class="fileinput-new"> Chọn ảnh </span>
+                                            <span class="fileinput-exists"> Chọn lại </span>
+                                            <input type="file" name="..."> </span>
+                                            <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Bỏ </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="margin-top-10">
+                                    <a href="javascript:;" class="btn green"> Lưu lại </a>
+                                    <a href="javascript:;" class="btn default"> Hủy bỏ </a>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- END CHANGE AVATAR TAB -->
+                        <!-- CHANGE PASSWORD TAB -->
+                        <div class="tab-pane" id="tab_1_3">
+                            <form action="#">
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="password" class="form-control" ng-model="vm.data.profile.Password" />
+                                    <label>Mật khẩu hiện tại</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="password" class="form-control" ng-model="vm.data.profile.NewPassword" />
+                                    <label>Mật khẩu mới</label>
+                                </div>
+                                <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                    <input type="password" class="form-control" ng-model="vm.data.profile.RetypePassword" />
+                                    <label>Nhập lại mật khẩu</label>
+                                </div>
+                                <div class="margin-top-10">
+                                    <a href="javascript:;" class="btn green"> Lưu lại </a>
+                                    <a href="javascript:;" class="btn default"> Hủy bỏ </a>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- END CHANGE PASSWORD TAB -->
+                        <!-- PRIVACY SETTINGS TAB -->
+                        <div class="tab-pane" id="tab_1_4">
+                            <form action="#">
+                                <table class="table table-light table-hover">
+                                    <tr>
+                                        <td> Danh sách các quyền mà tài khoản bạn sở hữu </td>
+                                        <td>
+                                            <div class="md-checkbox-inline">
+                                                <div class="md-checkbox has-success">
+                                                    <input type="checkbox" id="checkbox14" class="md-check">
+                                                    <label for="checkbox14">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> Option 1 </label>
+                                                </div>
+                                                <div class="md-checkbox has-error">
+                                                    <input type="checkbox" id="checkbox15" class="md-check" checked>
+                                                    <label for="checkbox15">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> Option 2 </label>
+                                                </div>
+                                                <div class="md-checkbox has-info">
+                                                    <input type="checkbox" id="checkbox16" class="md-check">
+                                                    <label for="checkbox16">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> Option 3 </label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <!-- END PRIVACY SETTINGS TAB -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PROFILE CONTENT -->

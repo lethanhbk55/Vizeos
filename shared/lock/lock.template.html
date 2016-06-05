@@ -1,0 +1,25 @@
+<div class="page-lock">
+    <div class="page-logo">
+        <a class="brand" href="#">
+            <img src="../assets/imgs/logo.png" alt="logo" /> </a>
+    </div>
+    <div class="page-body">
+        <div class="lock-head"> Khóa </div>
+        <div class="lock-body">
+            <div class="pull-left lock-avatar-block">
+                <img ng-src="{{$root.globals.profile.Avatar}}" class="lock-avatar"> </div>
+            <form class="lock-form pull-left">
+                <h4>{{$root.globals.profile.DisplayName}}</h4>
+                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" /> </div>
+                <div class="form-actions">
+                    <button type="button" ng-click="vm.actions.login()" class=" btn red uppercase ">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+        <div class="lock-bottom">
+            <a href="#" ng-click="vm.actions.logout()">Không phải {{$root.globals.profile.DisplayName}}?</a>
+        </div>
+    </div>
+    <div class="page-footer-custom "> 2016 &copy; VIP52. </div>
+</div>
