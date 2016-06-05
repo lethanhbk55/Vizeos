@@ -1,0 +1,132 @@
+<!doctype html>
+<html ng-app="vizeos">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="$1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vizeos</title>
+    <link rel="icon" href="assets/imgs/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/imgs/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese" rel="stylesheet" type="text/css">
+    <!-- assets:css -->
+    <link rel="stylesheet" href="assets/css/spinner.css">
+    <link rel="stylesheet" href="assets/libs/animate.css">
+    <link rel="stylesheet" href="assets/css/metronic/bootstrap.css">
+    <link rel="stylesheet" href="assets/libs/animate.css/animate.css">
+    <link rel="stylesheet" href="assets/css/metronic/global/components-md.css">
+    <link rel="stylesheet" href="assets/css/metronic/global/components.css">
+    <link rel="stylesheet" href="assets/css/metronic/global/plugins.css">
+    <link rel="stylesheet" href="assets/css/metronic/layout/custom.css">
+    <link rel="stylesheet" href="assets/css/metronic/layout/layout.css">
+    <link rel="stylesheet" href="assets/css/metronic/pages/lock.css">
+    <link rel="stylesheet" href="assets/css/metronic/pages/login.css">
+    <link rel="stylesheet" href="assets/css/metronic/pages/profile.css">
+    <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/libs/jasny-bootstrap/css/jasny-bootstrap.css">
+    <link rel="stylesheet" href="assets/libs/kendo/styles/kendo.common-bootstrap.min.css">
+    <link rel="stylesheet" href="assets/libs/kendo/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="assets/libs/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/libs/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/css/metronic/layout/themes/default.css">
+    <link rel="stylesheet" href="assets/libs/uniform/themes/default/css/uniform.default.css">
+    <!-- endinject -->
+</head>
+
+<body class="page-on-load page-header-menu-fixed" ng-controller="AppController as vm" ng-class="{'login': !$root.globals.status}">
+    <!-- BEGIN PAGE SPINNER -->
+    <div spinner class="page-spinner">
+        <div id="spinner">
+            <div></div>
+        </div>
+    </div>
+    <!-- END PAGE SPINNER -->
+    <!-- BEGIN PAGE LOCK -->
+    <div ng-if="$root.globals.status === 'locked'">
+        <div oc-lazy-load="'./shared/lock/lock.controller.js'">
+            <div ng-include="'./shared/lock/lock.template.html'" ng-controller="LockController as vm" class="fade-in-up">
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE LOCK -->
+    <!-- BEGIN PAGE LOGIN -->
+    <div ng-show="!$root.globals.status">
+        <div oc-lazy-load="'./shared/login/login.controller.js'">
+            <div ng-include="'./shared/login/login.template.html'" ng-controller="LoginController as vm" class="fade-in-up">
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE LOGIN -->
+    <div ng-show="$root.globals.status === 'logged'" class="fade-in-up">
+        <!-- BEGIN HEADER -->
+        <div oc-lazy-load="'./shared/header/header.controller.js'">
+            <div ng-include="'./shared/header/header.template.html'" ng-controller="HeaderController as vm" class="page-header">
+            </div>
+        </div>
+        <!-- END HEADER -->
+        <div class="clearfix"> </div>
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container fade-in-up">
+            <!-- BEGIN PAGE CONTENT -->
+            <div class="page-content">
+                <div class="container">
+                    <!-- BEGIN ACTUAL CONTENT -->
+                    <div class="page-content-inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div ui-view="content" class="fade-in-up"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ACTUAL CONTENT -->
+                </div>
+            </div>
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div oc-lazy-load="'./shared/footer/footer.controller.js'">
+            <div ng-include="'./shared/footer/footer.template.html'" ng-controller="FooterController"> </div>
+        </div>
+        <!-- END FOOTER -->
+    </div>
+    <!-- assets:js -->
+    <script src="assets/libs/jquery/jquery.js"></script>
+    <script src="assets/libs/angular/angular.js"></script>
+    <script src="assets/libs/angular-cookies/angular-cookies.js"></script>
+    <script src="assets/libs/angular-translate/angular-translate.js"></script>
+    <script src="assets/libs/angular-ui-router/angular-ui-router.js"></script>
+    <script src="assets/libs/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="assets/libs/jquery.countdown/jquery.countdown.js"></script>
+    <script src="assets/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="assets/libs/js-base64/base64.js"></script>
+    <script src="assets/libs/lodash/lodash.js"></script>
+    <script src="assets/libs/metronic/app.js"></script>
+    <script src="assets/libs/metronic/layout.js"></script>
+    <script src="assets/libs/moment/moment.js"></script>
+    <script src="assets/libs/oclazyload/ocLazyLoad.js"></script>
+    <script src="assets/libs/owl.carousel/owl.carousel.js"></script>
+    <script src="assets/libs/q/q.js"></script>
+    <script src="assets/libs/uniform/jquery.uniform.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/libs/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+    <script src="assets/libs/kendo/js/kendo.all.min.js"></script>
+    <!-- endinject -->
+    <!-- modules:js -->
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.directive.js"></script>
+    <script src="app.routes.js"></script>
+    <script src="shared/footer/footer.controller.js"></script>
+    <script src="shared/lock/lock.controller.js"></script>
+    <script src="shared/header/header.controller.js"></script>
+    <script src="shared/login/login.controller.js"></script>
+    <script src="shared/login/login.service.js"></script>
+    <script src="modules/profile/profile.controller.js"></script>
+    <script src="modules/users/users.controller.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
