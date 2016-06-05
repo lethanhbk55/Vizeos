@@ -5,10 +5,15 @@
         .module('vizeos')
         .controller('HeaderController', HeaderController);
 
-    HeaderController.$inject = ['login.service'];
+    HeaderController.$inject = ['$scope', 'login.service'];
 
     /* @ngInject */
-    function HeaderController($loginSvc) {
+    function HeaderController($scope, $loginSvc) {
+
+        $scope.$on('$includeContentLoaded', function() {
+            Layout.initHeader(); // init header
+        });
+
         var vm = this;
         vm.actions = {
             logout: function() {

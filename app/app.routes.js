@@ -4,7 +4,13 @@
     angular.module('vizeos').config(config);
 
     function config($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise(function($injector) {
+            var $rootScope = $injector.get('$rootScope');
+            if (!!$rootScope.globals && $rootScope.globals.status === 'logged') {
+                return '/users';
+            };
+            return '/';
+        });
 
         $stateProvider.state('profile', {
             url: '/profile',

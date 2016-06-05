@@ -24,7 +24,7 @@ gulp.task('sass:compile', ['sass:clean'], function() {
         './app/assets/sass/metronic/pages/lock.scss',
     ];
     stream.queue(gulp.src('./app/assets/sass/metronic/bootstrap.scss', { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),
-        gulp.src(['./app/assets/sass/metronic/global/components.scss', './app/assets/sass/metronic/global/plugins.scss'], { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),
+        gulp.src(['./app/assets/sass/metronic/global/components-md.scss', './app/assets/sass/metronic/global/components.scss', './app/assets/sass/metronic/global/plugins.scss'], { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),
         gulp.src(pageClasses, { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),
         gulp.src('./app/assets/sass/metronic/layout/*.scss', { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),
         gulp.src('./app/assets/sass/metronic/layout/themes/default.scss', { base: './app/assets/sass' }).pipe(sass()).pipe(gulp.dest('./app/assets/css')),

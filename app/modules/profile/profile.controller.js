@@ -5,14 +5,24 @@
         .module('vizeos')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ["$rootScope"];
+    ProfileController.$inject = ['$rootScope', 'login.service'];
 
     /* @ngInject */
-    function ProfileController($rootScope) {
+    function ProfileController($rootScope, $loginSvc) {
         var vm = this;
 
         vm.data = {
-            profile: $rootScope.globals.profile
+            profile: _.cloneDeep($rootScope.globals.profile)
+        };
+
+        vm.actions = {
+            update: function(profile) {
+                $loginSvc.setCredentials(profile);
+                vm.data.profile = _.cloneDeep($rootScope.globals.profile);
+            },
+            cancel: function() {
+                vm.data.profile = _.cloneDeep($rootScope.globals.profile);
+            }
         }
     }
 })();

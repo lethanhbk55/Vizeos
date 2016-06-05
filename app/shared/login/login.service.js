@@ -5,10 +5,10 @@
         .module('vizeos')
         .factory('login.service', LoginService);
 
-    LoginService.$inject = ['$cookieStore', '$rootScope', '$http', '$q', '$state', '$location'];
+    LoginService.$inject = ['$cookies', '$rootScope', '$http', '$q', '$location'];
 
     /* @ngInject */
-    function LoginService($cookieStore, $rootScope, $http, $q, $state, $location) {
+    function LoginService($cookies, $rootScope, $http, $q, $location) {
         var service = {
             setCredentials: setCredentials,
             clearCredentials: clearCredentials,
@@ -27,12 +27,12 @@
                 status: 'logged'
             };             
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;            
-            $cookieStore.put('globals', $rootScope.globals);        
+            $cookies.putObject('globals', $rootScope.globals);        
         };
 
         function clearCredentials() {            
             $rootScope.globals = {};            
-            $cookieStore.remove('globals');            
+            $cookies.remove('globals');            
             $http.defaults.headers.common.Authorization = 'Basic';        
         };
 
@@ -45,13 +45,13 @@
             }).then(function(profile) {
                 return service.setCredentials(profile);
             }).then(function() {
-                $state.go('users', {}, { reload: true });
+                $location.path('users')
             });
         };
 
         function lock() {
             $rootScope.globals.status = 'locked';
-            $cookieStore.put('globals', $rootScope.globals);
+            $cookies.putObject('globals', $rootScope.globals);
             $location.path('/');
         };
 

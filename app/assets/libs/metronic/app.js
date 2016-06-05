@@ -11,6 +11,14 @@ var App = function() {
 
     var resizeHandlers = [];
 
+    var assetsPath = '../assets/';
+
+    var globalImgPath = 'global/img/';
+
+    var globalPluginsPath = 'global/plugins/';
+
+    var globalCssPath = 'global/css/';
+
     // theme layout color set
 
     var brandColors = {
@@ -187,7 +195,7 @@ var App = function() {
             }
         });
     };
-
+    
     // Handlesmaterial design checkboxes
     var handleMaterialDesign = function() {
 
@@ -196,46 +204,46 @@ var App = function() {
             var the = $(this);
             // find the first span which is our circle/bubble
             var el = $(this).children('span:first-child');
-
+              
             // add the bubble class (we do this so it doesnt show on page load)
             el.addClass('inc');
-
+              
             // clone it
-            var newone = el.clone(true);
-
+            var newone = el.clone(true);  
+              
             // add the cloned version before our original
-            el.before(newone);
-
+            el.before(newone);  
+              
             // remove the original so that it is ready to run on next click
             $("." + el.attr("class") + ":last", the).remove();
-        });
+        }); 
 
-        if ($('body').hasClass('page-md')) {
+        if ($('body').hasClass('page-md')) { 
             // Material design click effect
             // credit where credit's due; http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design       
             var element, circle, d, x, y;
-            $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function(e) {
+            $('body').on('click', 'a.btn, button.btn, input.btn, label.btn', function(e) { 
                 element = $(this);
-
-                if (element.find(".md-click-circle").length == 0) {
+      
+                if(element.find(".md-click-circle").length == 0) {
                     element.prepend("<span class='md-click-circle'></span>");
                 }
-
+                    
                 circle = element.find(".md-click-circle");
                 circle.removeClass("md-click-animate");
-
-                if (!circle.height() && !circle.width()) {
+                
+                if(!circle.height() && !circle.width()) {
                     d = Math.max(element.outerWidth(), element.outerHeight());
-                    circle.css({ height: d, width: d });
+                    circle.css({height: d, width: d});
                 }
-
-                x = e.pageX - element.offset().left - circle.width() / 2;
-                y = e.pageY - element.offset().top - circle.height() / 2;
-
-                circle.css({ top: y + 'px', left: x + 'px' }).addClass("md-click-animate");
+                
+                x = e.pageX - element.offset().left - circle.width()/2;
+                y = e.pageY - element.offset().top - circle.height()/2;
+                
+                circle.css({top: y+'px', left: x+'px'}).addClass("md-click-animate");
 
                 setTimeout(function() {
-                    circle.remove();
+                    circle.remove();      
                 }, 1000);
             });
         }
@@ -247,16 +255,16 @@ var App = function() {
             } else {
                 el.removeClass('edited');
             }
-        }
+        } 
 
-        $('body').on('keydown', '.form-md-floating-label .form-control', function(e) {
+        $('body').on('keydown', '.form-md-floating-label .form-control', function(e) { 
             handleInput($(this));
         });
-        $('body').on('blur', '.form-md-floating-label .form-control', function(e) {
+        $('body').on('blur', '.form-md-floating-label .form-control', function(e) { 
             handleInput($(this));
-        });
+        });        
 
-        $('.form-md-floating-label .form-control').each(function() {
+        $('.form-md-floating-label .form-control').each(function(){
             if ($(this).val().length > 0) {
                 $(this).addClass('edited');
             }
@@ -301,9 +309,9 @@ var App = function() {
         if (!$().confirmation) {
             return;
         }
-        $('[data-toggle=confirmation]').confirmation({ btnOkClass: 'btn btn-sm btn-success', btnCancelClass: 'btn btn-sm btn-danger' });
+        $('[data-toggle=confirmation]').confirmation({ btnOkClass: 'btn btn-sm btn-success', btnCancelClass: 'btn btn-sm btn-danger'});
     }
-
+    
     // Handles Bootstrap Accordions.
     var handleAccordions = function() {
         $('body').on('shown.bs.collapse', '.accordion.scrollable', function(e) {
@@ -331,7 +339,7 @@ var App = function() {
     };
 
     // Handles Bootstrap Modals.
-    var handleModals = function() {
+    var handleModals = function() {        
         // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
         $('body').on('hide.bs.modal', function() {
             if ($('.modal:visible').size() > 1 && $('html').hasClass('modal-open') === false) {
@@ -354,7 +362,7 @@ var App = function() {
         });
 
         // remove ajax content and remove cache on modal closed 
-        $('body').on('hidden.bs.modal', '.modal:not(.modal-cached)', function() {
+        $('body').on('hidden.bs.modal', '.modal:not(.modal-cached)', function () {
             $(this).removeData('bs.modal');
         });
     };
@@ -523,15 +531,15 @@ var App = function() {
             $.fn.select2.defaults.set("theme", "bootstrap");
             $('.select2me').select2({
                 placeholder: "Select",
-                width: 'auto',
+                width: 'auto', 
                 allowClear: true
             });
         }
     };
 
     // handle group element heights
-    var handleHeight = function() {
-        $('[data-auto-height]').each(function() {
+   var handleHeight = function() {
+       $('[data-auto-height]').each(function() {
             var parent = $(this);
             var items = $('[data-height]', parent);
             var height = 0;
@@ -561,12 +569,12 @@ var App = function() {
                 }
             });
 
-            if (parent.attr('data-related')) {
+            if(parent.attr('data-related')) {
                 $(parent.attr('data-related')).css('height', parent.height());
             }
-        });
+       });       
     }
-
+    
     //* END:CORE HANDLERS *//
 
     return {
@@ -959,6 +967,34 @@ var App = function() {
             return (typeof angular == 'undefined') ? false : true;
         },
 
+        getAssetsPath: function() {
+            return assetsPath;
+        },
+
+        setAssetsPath: function(path) {
+            assetsPath = path;
+        },
+
+        setGlobalImgPath: function(path) {
+            globalImgPath = path;
+        },
+
+        getGlobalImgPath: function() {
+            return assetsPath + globalImgPath;
+        },
+
+        setGlobalPluginsPath: function(path) {
+            globalPluginsPath = path;
+        },
+
+        getGlobalPluginsPath: function() {
+            return assetsPath + globalPluginsPath;
+        },
+
+        getGlobalCssPath: function() {
+            return assetsPath + globalCssPath;
+        },
+
         // get layout color code by color name
         getBrandColor: function(name) {
             if (brandColors[name]) {
@@ -971,14 +1007,18 @@ var App = function() {
         getResponsiveBreakpoint: function(size) {
             // bootstrap responsive breakpoints
             var sizes = {
-                'xs': 480, // extra small
-                'sm': 768, // small
-                'md': 992, // medium
-                'lg': 1200 // large
+                'xs' : 480,     // extra small
+                'sm' : 768,     // small
+                'md' : 992,     // medium
+                'lg' : 1200     // large
             };
 
-            return sizes[size] ? sizes[size] : 0;
+            return sizes[size] ? sizes[size] : 0; 
         }
     };
 
 }();
+
+jQuery(document).ready(function() {    
+   App.init(); // init metronic core componets
+});

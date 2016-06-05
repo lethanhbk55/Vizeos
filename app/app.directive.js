@@ -15,24 +15,31 @@
                     }
                 }
             }
+        }).directive('dropdownMenuHover', function() {
+            return {
+                link: function(scope, element, attrs) {
+                    element.dropdownHover();
+                }
+            };
         });
 
-    function spinner($rootScope, $cookieStore, $state, $http) {
+    function spinner($rootScope, $cookies, $location, $http) {
 
         return {
             link: link,
         };
 
         function link(scope, element, attrs) {
-            element.removeClass('hide');
-            $('body').addClass('page-on-load');
+            element.addClass('hide');
+            $('body').removeClass('page-on-load');
+
             $rootScope.$on('$stateChangeStart', function() {
-                $rootScope.globals = $cookieStore.get('globals') || {};
-                if ($rootScope.globals.profile) {
+                $rootScope.globals = $cookies.getObject('globals');
+                if (!!$rootScope.globals && !!$rootScope.globals.profile) {
                     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.profile.authdata;
                 } else {
-                    if ($state.current.name !== '' && $state.current.name !== 'home') {
-                        $state.go('home', {}, { reload: true });
+                    if ($location.$$path !== '/') {
+                        $location.path('/');
                     };
                 };
                 element.removeClass('hide');
@@ -41,6 +48,9 @@
             $rootScope.$on('$stateChangeSuccess', function() {
                 element.addClass('hide');
                 $('body').removeClass('page-on-load');
+                _.defer(function() {
+                    App.init();
+                });
             });
             $rootScope.$on('$stateNotFound', function() {
                 element.removeClass('hide');
