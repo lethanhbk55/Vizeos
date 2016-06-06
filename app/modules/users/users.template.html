@@ -29,62 +29,41 @@
                     <table class="table table-striped table-bordered table-advance table-hover">
                         <thead>
                             <tr>
-                                <th>
-                                    <i class="fa fa-briefcase"></i> Company </th>
-                                <th class="hidden-xs">
-                                    <i class="fa fa-user"></i> Contact </th>
-                                <th>
-                                    <i class="fa fa-shopping-cart"></i> Total </th>
-                                <th> </th>
+                                <th class="text-center">Mã người chơi</th>
+                                <th class="text-center">Tên đăng nhập</th>
+                                <th class="text-center">Tên hiển thị</th>
+                                <th class="text-center">Ngày sinh</th>
+                                <th class="text-center">Số điện thoại</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Ngày đăng ký</th>
+                                <th class="text-center">Kích hoạt</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="highlight">
+                            <tr ng-repeat="user in vm.data.users">
+                                <td class="highlight text-center">
                                     <div class="success"></div>
-                                    <a href="javascript:;"> RedBull </a>
+                                    <a href="javascript:;">{{user.Id}}</a>
                                 </td>
-                                <td class="hidden-xs"> Mike Nilson </td>
-                                <td> 2560.60$ </td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-outline btn-circle btn-sm purple">
-                                        <i class="fa fa-edit"></i> Edit </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="highlight">
-                                    <div class="info"> </div>
-                                    <a href="javascript:;"> Google </a>
-                                </td>
-                                <td class="hidden-xs"> Adam Larson </td>
-                                <td> 560.60$ </td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black">
-                                        <i class="fa fa-trash-o"></i> Delete </a>
+                                <td>{{user.Username}}</td>
+                                <td>{{user.DisplayName}}</td>
+                                <td class="text-center">{{user.Birthday}}</td>
+                                <td>{{user.PhoneNumber}}</td>
+                                <td>{{user.Email}}</td>
+                                <td class="text-center">{{user.RegistedDate}}</td>
+                                <td class="text-center">
+                                    <div class="md-checkbox has-info">
+                                        <input type="checkbox" id="checkbox16" class="md-check">
+                                        <label for="checkbox16">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span></label>
+                                    </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="highlight">
-                                    <div class="success"> </div>
-                                    <a href="javascript:;"> Apple </a>
-                                </td>
-                                <td class="hidden-xs"> Daniel Kim </td>
-                                <td> 3460.60$ </td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple">
-                                        <i class="fa fa-edit"></i> Edit </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="highlight">
-                                    <div class="warning"> </div>
-                                    <a href="javascript:;"> Microsoft </a>
-                                </td>
-                                <td class="hidden-xs"> Nick </td>
-                                <td> 2560.60$ </td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-outline btn-circle red btn-sm blue">
-                                        <i class="fa fa-share"></i> Share </a>
+                            <tr ng-show="vm.data.users.length < 1">
+                                <td colspan="8">
+                                    Không tìm thấy người dùng nào!
                                 </td>
                             </tr>
                         </tbody>
